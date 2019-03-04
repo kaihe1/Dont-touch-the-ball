@@ -1,0 +1,240 @@
+<html>
+  <head>
+    <script src="p5.min.js"></script>
+    <style>
+   
+    </style>
+  </head>
+  <body>
+    <h1 id="result"></h1>
+    <h1 id="score"></h1>
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var ball = new ball(); // I am creating a new object globally
+      var ball2 = new ball2();
+      var ball3 = new ball3();
+      var ball4 = new ball4();
+      var ball5 = new ball5();
+      var ball6 = new ball6();
+
+      var ball7 = new ball7();
+      var ball8 = new ball8();
+      var d;
+      var s1 = 100;
+      var s2 = 100;
+      var s3 = 100;
+      var s4 = 100;
+      
+      var time = 0;
+      setInterval(function(){
+        time += 0.01;
+        document.getElementById('score').innerHTML = "Score:" + time.toFixed(2);
+      })
+
+
+
+      function setup(){
+        createCanvas(w,h);
+        x3 = random(w);
+        y3 = random(h);
+        x4 = random(w);
+        y4 = random(h);
+        x5 = random(w);
+        y5 = random(h);
+        x6 = random(w);
+        y6 = random(h);
+        x7 = random(w);
+        y7 = random(h);
+        x8 = random(w);
+        y8 = random(h);
+        
+        
+        bx1 = random(1,150);
+        by1 = random(1,150);
+        bx2 = random(1,150);
+        by2 = random(1,150);
+        bx3 = random(1,150);
+        by3 = random(1,150);
+
+        bx4 = random(1,150);
+        by4 = random(1,150);
+        bx5 = random(1,150);
+        by5 = random(1,150);
+
+      }
+      
+      function draw(){
+
+        background(255);
+        ball.show();
+        ball.move();
+        ball2.show();
+        ball2.move();
+        ball2.kill();
+        ball3.show();
+        ball3.buff();
+        ball4.show();
+        ball4.buff();
+        ball5.show();
+        ball5.buff();
+        ball6.show();
+        ball6.buff();
+        
+        ball7.show();
+        ball7.buff();
+        ball8.show();
+        ball8.buff();
+
+      }
+      
+      function ball(){
+        this.X = 100;
+        this.Y = 100;
+        
+        this.show = function(){
+          fill(color("red"));
+          ellipse(this.X,this.Y,s3,s4);
+        };
+        this.move = function(){
+          if (keyIsDown(68) && (this.X < w-100)){//right arrow key
+                this.X += 10;
+          }
+          if (keyIsDown(65) && (this.X > 0)){//left arrow key
+                this.X -= 10;
+          }
+          if (keyIsDown(87) && (this.Y > 0)){//up arrow key
+                this.Y -= 10;
+          }
+          if (keyIsDown(83) && (this.Y < h-100)){//down arrow key
+                this.Y += 10;
+          }
+        };
+      }
+      
+      function ball2(){
+        this.X = w/2;
+        this.Y = h/2;
+
+        
+        this.show = function(){
+          fill(color("blue"));
+          ellipse(this.X,this.Y,s1,s2);
+        };
+        this.move = function(){
+          if (keyIsDown(76) && (this.X < w-100)){//right arrow key
+                this.X += 10;
+          }
+          if (keyIsDown(74) && (this.X > 0)){//left arrow key
+                this.X -= 10;
+          }
+          if (keyIsDown(73) && (this.Y > 0)){//up arrow key
+                this.Y -= 10;
+          }
+          if (keyIsDown(75) && (this.Y < h-100)){//down arrow key
+                this.Y += 10;
+          }
+        };
+         this.kill = function(){
+            d = dist(this.X,this.Y,ball.X,ball.Y);//calculating two disdance of two object
+            if (d < 100){
+              s1 += 1;
+              s2 += 1;
+              s3 -= 1;
+              s4 -= 1;
+            }
+            if ((s3 < 30) && (s3 < 30)){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+            }
+        };
+      }
+
+      function ball3(){
+        this.show = function(){
+          fill(color("pink"));
+          ellipse(x3,y3,bx1,by1);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x3,y3);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+       function ball4(){
+        this.show = function(){
+          fill(color("brown"));
+          ellipse(x4,y4,bx2,bx2);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x4,y4);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+       function ball5(){
+        this.show = function(){
+          fill(color("green"));
+          ellipse(x5,y5,bx3,bx3);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x5,y5);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BLUE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+      function ball6(){
+        this.show = function(){
+          fill(color("yellow"));
+          ellipse(x6,y6,30,30);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x6,y6);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+      function ball7(){
+        this.show = function(){
+          fill(color("tomato"));
+          ellipse(x7,y7,bx4,bx4);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x7,y7);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BUlE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+            function ball8(){
+        this.show = function(){
+          fill(color("black"));
+          ellipse(x8,y8,bx5,bx5);
+        };
+        this.buff = function(){
+            d = dist(ball.X,ball.Y,x8,y8);//calculating two disdance of two object
+             if (d < 50){
+              noLoop();//stop the loop
+              document.getElementById('result').innerHTML = "BLUE BALL WIN!!!";
+              //window.alert("YOU LOSE");//alert losing
+            }
+        };
+      }
+
+    </script>
+  </body>
+</html>
