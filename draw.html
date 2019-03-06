@@ -26,6 +26,8 @@
       var s3 = 100;
       var s4 = 100;
       
+      var point = [];
+      
       var time = 0;
       setInterval(function(){
         time += 0.01;
@@ -115,37 +117,33 @@
       function ball2(){
         this.X = w/2;
         this.Y = h/2;
-
-        
         this.show = function(){
           fill(color("blue"));
           ellipse(this.X,this.Y,s1,s2);
         };
         this.move = function(){
-          if (keyIsDown(76) && (this.X < w-100)){//right arrow key
-                this.X += 10;
+        randX = random(-50,50);
+        randY = random(-50,50);
+        this.X += randX;
+        this.Y += randY;
+        if (this.X < w-100){//right arrow key
+                this.X += 100;
           }
-          if (keyIsDown(74) && (this.X > 0)){//left arrow key
-                this.X -= 10;
+          if (this.X > 100){//left arrow key
+                this.X -= 100;
           }
-          if (keyIsDown(73) && (this.Y > 0)){//up arrow key
-                this.Y -= 10;
+          if (this.Y > 100){//up arrow key
+                this.Y -= 100;
           }
-          if (keyIsDown(75) && (this.Y < h-100)){//down arrow key
-                this.Y += 10;
+          if (this.Y < h-100){//down arrow key
+                this.Y += 100;
           }
         };
          this.kill = function(){
             d = dist(this.X,this.Y,ball.X,ball.Y);//calculating two disdance of two object
-            if (d < 100){
-              s1 += 1;
-              s2 += 1;
-              s3 -= 1;
-              s4 -= 1;
-            }
-            if ((s3 < 30) && (s3 < 30)){
+            if (d < 50){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "YOU LOSE";
             }
         };
       }
@@ -159,7 +157,7 @@
             d = dist(ball.X,ball.Y,x3,y3);//calculating two disdance of two object
              if (d < 50){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "YOU LOSE";
               //window.alert("YOU LOSE");//alert losing
             }
         };
@@ -173,7 +171,7 @@
             d = dist(ball.X,ball.Y,x4,y4);//calculating two disdance of two object
              if (d < 50){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "YOU LOSE";
               //window.alert("YOU LOSE");//alert losing
             }
         };
@@ -187,7 +185,7 @@
             d = dist(ball.X,ball.Y,x5,y5);//calculating two disdance of two object
              if (d < 50){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BLUE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "YOU LOSE";
               //window.alert("YOU LOSE");//alert losing
             }
         };
@@ -201,7 +199,7 @@
             d = dist(ball.X,ball.Y,x6,y6);//calculating two disdance of two object
              if (d < 50){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BULE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "YOU LOSE";
               //window.alert("YOU LOSE");//alert losing
             }
         };
@@ -220,16 +218,16 @@
             }
         };
       }
-            function ball8(){
+         function ball8(){
         this.show = function(){
           fill(color("black"));
           ellipse(x8,y8,bx5,bx5);
         };
         this.buff = function(){
-            d = dist(ball.X,ball.Y,x8,y8);//calculating two disdance of two object
-             if (d < 50){
+               d = dist(ball.X,ball.Y,x8,y8);
+                if (d < 70){
               noLoop();//stop the loop
-              document.getElementById('result').innerHTML = "BLUE BALL WIN!!!";
+              document.getElementById('result').innerHTML = "RED BALL WIN!!!";
               //window.alert("YOU LOSE");//alert losing
             }
         };
